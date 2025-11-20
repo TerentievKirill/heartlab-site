@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Heartlab — tiny apps for self-love</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Heartlab is a tiny one-person studio creating gentle mobile apps to make life a little softer.">
+  <style>
+    :root {
+      --bg1: #ffd6e6;
+      --bg2: #ffe5cc;
+      --bg3: #ffdede;
+      --card-bg: rgba(255,255,255,0.55);
+      --card-border: rgba(255,255,255,0.8);
+      --accent: #ff6ea7;
+      --accent-dark: #ff4f93;
+      --text-main: #2f2f2f;
+      --text-soft: #555;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px 16px;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Nunito", sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      background-size: 200% 200%;
+      animation: gradientMove 14s ease-in-out infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-main);
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .shell {
+      width: 100%;
+      max-width: 520px;
+      padding: 28px 24px 22px;
+      border-radius: 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 16px 40px rgba(255,150,190,0.35);
+      backdrop-filter: blur(14px);
+      text-align: center;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+    .subtitle {
+      font-size: 17px;
+      color: var(--text-soft);
+      margin-bottom: 18px;
+    }
+    .text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-soft);
+      margin-bottom: 22px;
+    }
+    .apps {
+      margin-bottom: 18px;
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: none;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(255,110,167,0.45);
+    }
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(255,110,167,0.6);
+    }
+    .btn-ghost {
+      background: rgba(255,255,255,0.8);
+      color: var(--text-main);
+      border: 1px solid rgba(255,255,255,0.9);
+    }
+    .btn-ghost:hover {
+      background: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(255,180,210,0.4);
+    }
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(0,0,0,0.55);
+      margin: 0 0 10px;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: rgba(0,0,0,0.6);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .footer a {
+      color: rgba(0,0,0,0.7);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(0,0,0,0.2);
+    }
+    .footer a:hover {
+      border-bottom-style: solid;
+    }
+    @media (max-width: 480px) {
+      .shell { padding: 22px 18px 18px; }
+      h1 { font-size: 26px; }
+      .subtitle { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <h1>Heartlab</h1>
+    <p class="subtitle">a tiny one-person studio</p>
+
+    <p class="text">
+      Привет 👋 Я маленькая студия в лице одного человека. 
+      Я делаю тёплые приложения, которые помогают чуть-чуть 
+      бережнее относиться к себе и делать мир мягче — по одному дню за раз.
+    </p>
+
+    <section class="apps">
+      <p class="section-title">приложения</p>
+      <div class="btn-row">
+        <!-- TODO: подставить реальные ссылки магазинов -->
+        <a class="btn btn-primary" href="#" target="_blank" rel="noopener">
+          Google Play
+        </a>
+        <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">
+          App Store
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-title">я в соцсетях</p>
+      <div class="btn-row">
+        <!-- TODO: подставить реальные ссылки соцсетей -->
+        <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">
+          TikTok
+        </a>
+        <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">
+          YouTube
+        </a>
+        <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">
+          Instagram
+        </a>
+      </div>
+    </section>
+
+    <div class="footer">
+      <span>© 2025 Heartlab</span>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+  </main>
+</body>
+</html>
