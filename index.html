@@ -5,6 +5,7 @@
   <title>Heartlab — tiny apps for self-love</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Heartlab is a tiny one-person studio creating gentle mobile apps to make life a little softer.">
+
   <style>
     :root {
       --bg1: #ffd6e6;
@@ -64,9 +65,6 @@
       color: var(--text-soft);
       margin-bottom: 22px;
     }
-    .apps {
-      margin-bottom: 18px;
-    }
     .btn-row {
       display: flex;
       flex-wrap: wrap;
@@ -74,18 +72,12 @@
       justify-content: center;
     }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       padding: 10px 16px;
       border-radius: 999px;
-      border: none;
-      text-decoration: none;
       font-size: 14px;
       font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s;
-      white-space: nowrap;
+      text-decoration: none;
+      transition: 0.16s;
     }
     .btn-primary {
       background: var(--accent);
@@ -95,17 +87,11 @@
     .btn-primary:hover {
       background: var(--accent-dark);
       transform: translateY(-1px);
-      box-shadow: 0 10px 26px rgba(255,110,167,0.6);
     }
     .btn-ghost {
       background: rgba(255,255,255,0.8);
       color: var(--text-main);
       border: 1px solid rgba(255,255,255,0.9);
-    }
-    .btn-ghost:hover {
-      background: #fff;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(255,180,210,0.4);
     }
     .section-title {
       font-size: 14px;
@@ -120,88 +106,90 @@
       font-size: 12px;
       color: rgba(0,0,0,0.6);
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
       gap: 10px;
+      justify-content: center;
     }
     .footer a {
       color: rgba(0,0,0,0.7);
       text-decoration: none;
       border-bottom: 1px dotted rgba(0,0,0,0.2);
     }
-    .footer a:hover {
-      border-bottom-style: solid;
-    }
-    @media (max-width: 480px) {
-      .shell { padding: 22px 18px 18px; }
-      h1 { font-size: 26px; }
-      .subtitle { font-size: 16px; }
-    }
   </style>
 </head>
+
 <body>
   <main class="shell">
     <h1>Heartlab</h1>
-    <p class="subtitle">a tiny one‑person studio</p>
+    <p class="subtitle" id="subtitle"></p>
 
-    <p class="text" style="margin-top: 12px; font-size: 14px; opacity: 0.85;">
-      Contact: <a href="mailto:hello@heartlab.app" style="color: var(--accent); text-decoration: none;">hello@heartlab.app</a>
+    <p class="text" style="margin-top:12px; font-size:14px;">
+      <span id="contactLabel"></span>
+      <a href="mailto:hello@heartlab.app" style="color:var(--accent); text-decoration:none;">
+        hello@heartlab.app
+      </a>
     </p>
 
-    <p class="text">
-      Hi 👋 I'm a one‑person studio building gentle little apps that make life feel a bit softer.
-      Heartlab is my personal project — a space where design, emotion, and tiny daily rituals meet.
-      I believe that even one sentence, shown at the right moment, can change how your day feels.
-    </p>
+    <p class="text" id="text1"></p>
+    <p class="text" id="text2"></p>
 
-    <p class="text">
-      My mission is simple: create small, warm digital things that help you breathe easier,
-      think clearer, and treat yourself with the same tenderness you give to others.
-      No pressure, no lectures — just soft reminders for the quieter parts of life.
-    </p>
+    <p class="section-title" id="appsTitle"></p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.lovetodo.app" target="_blank">Google Play</a>
+      <a class="btn btn-primary" href="https://apps.apple.com/us/app/love-to-do-heart-reminders/id6756277592" target="_blank">App Store</a>
+    </div>
 
-    <section class="apps">
-      <p class="section-title">apps</p>
-      <div class="btn-row">
-        <a class="btn btn-primary"
-			href="https://play.google.com/store/apps/details?id=com.lovetodo.app"
-			target="_blank" rel="noopener">
-          Google Play
-        </a>
-        <a class="btn btn-primary"
-			href="https://apps.apple.com/us/app/love-to-do-heart-reminders/id6756277592"
-			target="_blank" rel="noopener">
-          App Store
-        </a>
-      </div>
-    </section>
-
-    <section>
-      <p class="section-title">social</p>
-      <div class="btn-row">
-        <a class="btn btn-ghost"
-			href="https://www.tiktok.com/@heartlab.app"
-			target="_blank" rel="noopener">
-          TikTok
-        </a>
-        <a class="btn btn-ghost"
-			href="https://www.youtube.com/channel/UCXUhbBoTTpz3ajGLNJZUX-Q"
-			target="_blank" rel="noopener">
-          YouTube
-        </a>
-        <a class="btn btn-ghost"
-			href="https://www.instagram.com/heartlab.app/"
-			target="_blank" rel="noopener">
-          Instagram
-        </a>
-      </div>
-    </section>
+    <p class="section-title" id="socialTitle" style="margin-top:18px;"></p>
+    <div class="btn-row">
+      <a class="btn btn-ghost" href="https://www.tiktok.com/@heartlab.app" target="_blank">TikTok</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/heartlab.app/" target="_blank">Instagram</a>
+      <a class="btn btn-ghost" href="https://www.youtube.com/channel/UCXUhbBoTTpz3ajGLNJZUX-Q" target="_blank">YouTube</a>
+    </div>
 
     <div class="footer">
       <span>© 2025 Heartlab</span>
-      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/privacy.html">Privacy</a>
       <a href="/terms.html">Terms</a>
     </div>
   </main>
+
+  <script>
+    const T = {
+      en: {
+        subtitle: "a tiny one-person studio",
+        contact: "Contact:",
+        t1: "Hi 👋 I'm a one-person studio building gentle little apps that make life feel a bit softer.",
+        t2: "My mission is simple: create small, warm digital things that help you breathe easier.",
+        apps: "apps",
+        social: "social"
+      },
+      ru: {
+        subtitle: "небольшая студия одного человека",
+        contact: "Контакт:",
+        t1: "Привет 👋 Я создаю тёплые приложения, которые делают жизнь чуть мягче.",
+        t2: "Моя миссия — маленькие цифровые вещи, которые помогают дышать спокойнее.",
+        apps: "приложения",
+        social: "соцсети"
+      },
+      es: {
+        subtitle: "un pequeño estudio de una sola persona",
+        contact: "Contacto:",
+        t1: "Hola 👋 Creo aplicaciones suaves que hacen la vida un poco más ligera.",
+        t2: "Mi misión es crear pequeñas cosas digitales que te ayuden a respirar mejor.",
+        apps: "aplicaciones",
+        social: "redes"
+      }
+    };
+
+    const l = navigator.language.toLowerCase();
+    const lang = l.startsWith("ru") ? "ru" : l.startsWith("es") ? "es" : "en";
+    const t = T[lang];
+
+    document.getElementById("subtitle").textContent = t.subtitle;
+    document.getElementById("contactLabel").textContent = t.contact;
+    document.getElementById("text1").textContent = t.t1;
+    document.getElementById("text2").textContent = t.t2;
+    document.getElementById("appsTitle").textContent = t.apps;
+    document.getElementById("socialTitle").textContent = t.social;
+  </script>
 </body>
 </html>
