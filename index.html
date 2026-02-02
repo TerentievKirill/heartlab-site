@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Heartlab — tiny apps for self-love</title>
+  <title>Heartlab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Heartlab is a tiny one-person studio creating gentle mobile apps to make life a little softer.">
+  <meta name="description" content="Heartlab — персональный проект и платформа для тренировок без давления.">
 
   <style>
     :root {
@@ -23,7 +23,7 @@
       margin: 0;
       padding: 32px 16px;
       min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Nunito", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
       background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
       background-size: 200% 200%;
       animation: gradientMove 14s ease-in-out infinite;
@@ -39,37 +39,48 @@
     }
     .shell {
       width: 100%;
-      max-width: 520px;
-      padding: 28px 24px 22px;
-      border-radius: 24px;
+      max-width: 560px;
+      padding: 30px 26px 24px;
+      border-radius: 26px;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       box-shadow: 0 16px 40px rgba(255,150,190,0.35);
       backdrop-filter: blur(14px);
-      text-align: center;
     }
     h1 {
       margin: 0 0 6px;
       font-size: 30px;
       font-weight: 700;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
+      text-align: center;
     }
     .subtitle {
-      font-size: 17px;
+      font-size: 16px;
       color: var(--text-soft);
-      margin-bottom: 18px;
+      margin-bottom: 22px;
+      text-align: center;
     }
     .text {
       font-size: 15px;
-      line-height: 1.6;
+      line-height: 1.65;
       color: var(--text-soft);
-      margin-bottom: 22px;
+      margin-bottom: 18px;
+    }
+    .section-title {
+      margin-top: 26px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(0,0,0,0.55);
     }
     .btn-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
+      margin-top: 10px;
     }
     .btn {
       padding: 10px 16px;
@@ -93,21 +104,14 @@
       color: var(--text-main);
       border: 1px solid rgba(255,255,255,0.9);
     }
-    .section-title {
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(0,0,0,0.55);
-      margin: 0 0 10px;
-    }
     .footer {
-      margin-top: 20px;
+      margin-top: 26px;
       font-size: 12px;
       color: rgba(0,0,0,0.6);
       display: flex;
       gap: 10px;
       justify-content: center;
+      flex-wrap: wrap;
     }
     .footer a {
       color: rgba(0,0,0,0.7);
@@ -120,76 +124,57 @@
 <body>
   <main class="shell">
     <h1>Heartlab</h1>
-    <p class="subtitle" id="subtitle"></p>
-
-    <p class="text" style="margin-top:12px; font-size:14px;">
-      <span id="contactLabel"></span>
-      <a href="mailto:hello@heartlab.app" style="color:var(--accent); text-decoration:none;">
-        hello@heartlab.app
-      </a>
+    <p class="subtitle">
+      инструменты, которые помогают тренироваться в реальной жизни
     </p>
 
-    <p class="text" id="text1"></p>
-    <p class="text" id="text2"></p>
+    <p class="text">
+      Я не тренер и не инфлюенсер.  
+      Я разработчик, который несколько раз пытался встроить тренировки в жизнь — и каждый раз упирался не в тело, а в систему.
+    </p>
 
-    <p class="section-title" id="appsTitle"></p>
+    <p class="text">
+      Большинство фитнес-приложений требуют дисциплины, которой у человека обычно нет.  
+      Они хорошо выглядят, но плохо живут в реальности.
+    </p>
+
+    <p class="text">
+      Поэтому я начал делать платформу, в которой учитывается фактический результат,  
+      нет наказаний за пропуски и нет давления дедлайнов.
+    </p>
+
+    <p class="text">
+      Сейчас платформа находится в активной разработке.  
+      Это не концепт и не идея — это рабочий инструмент, который я довожу до устойчивого состояния.
+    </p>
+
+    <p class="text">
+      Платформа уже используется в реальной работе и развивается на основе практического опыта, а не гипотез.
+    </p>
+
+    <div class="section-title">Другие проекты</div>
+    <p class="text">
+      Love To-Do — небольшой побочный проект.  
+      Я использую его сам и поддерживаю, но сейчас он не находится в основном фокусе развития.
+    </p>
+
     <div class="btn-row">
-      <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.lovetodo.app" target="_blank">Google Play</a>
-      <a class="btn btn-primary" href="https://apps.apple.com/us/app/love-to-do-heart-reminders/id6756277592" target="_blank">App Store</a>
+      <a class="btn btn-ghost" href="https://apps.apple.com/us/app/love-to-do-heart-reminders/id6756277592" target="_blank">
+        Love To-Do · App Store
+      </a>
     </div>
 
-    <p class="section-title" id="socialTitle" style="margin-top:18px;"></p>
+    <div class="section-title">Связаться со мной</div>
     <div class="btn-row">
-      <a class="btn btn-ghost" href="https://www.tiktok.com/@heartlab.app" target="_blank">TikTok</a>
-      <a class="btn btn-ghost" href="https://www.instagram.com/heartlab.app/" target="_blank">Instagram</a>
-      <a class="btn btn-ghost" href="https://www.youtube.com/channel/UCXUhbBoTTpz3ajGLNJZUX-Q" target="_blank">YouTube</a>
+      <a class="btn btn-primary" href="mailto:hello@heartlab.app">Email</a>
+      <a class="btn btn-ghost" href="https://t.me/yourtelegram" target="_blank">Telegram</a>
     </div>
 
     <div class="footer">
-      <span>© 2025 Heartlab</span>
+      <span>© 2026 Heartlab</span>
       <a href="/privacy.html">Privacy</a>
       <a href="/terms.html">Terms</a>
     </div>
   </main>
-
-  <script>
-    const T = {
-      en: {
-        subtitle: "a tiny one-person studio",
-        contact: "Contact:",
-        t1: "Hi 👋 I'm a one-person studio building gentle little apps that make life feel a bit softer.",
-        t2: "My mission is simple: create small, warm digital things that help you breathe easier.",
-        apps: "apps",
-        social: "social"
-      },
-      ru: {
-        subtitle: "небольшая студия одного человека",
-        contact: "Контакт:",
-        t1: "Привет 👋 Я создаю тёплые приложения, которые делают жизнь чуть мягче.",
-        t2: "Моя миссия — маленькие цифровые вещи, которые помогают дышать спокойнее.",
-        apps: "приложения",
-        social: "соцсети"
-      },
-      es: {
-        subtitle: "un pequeño estudio de una sola persona",
-        contact: "Contacto:",
-        t1: "Hola 👋 Creo aplicaciones suaves que hacen la vida un poco más ligera.",
-        t2: "Mi misión es crear pequeñas cosas digitales que te ayuden a respirar mejor.",
-        apps: "aplicaciones",
-        social: "redes"
-      }
-    };
-
-    const l = navigator.language.toLowerCase();
-    const lang = l.startsWith("ru") ? "ru" : l.startsWith("es") ? "es" : "en";
-    const t = T[lang];
-
-    document.getElementById("subtitle").textContent = t.subtitle;
-    document.getElementById("contactLabel").textContent = t.contact;
-    document.getElementById("text1").textContent = t.t1;
-    document.getElementById("text2").textContent = t.t2;
-    document.getElementById("appsTitle").textContent = t.apps;
-    document.getElementById("socialTitle").textContent = t.social;
-  </script>
 </body>
 </html>
