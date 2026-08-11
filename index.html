@@ -1,198 +1,705 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>Heartlab</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Heartlab — платформа «Ты сможешь»: фитнес для обычной жизни, без давления и чувства вины.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Kirill Terentiev — QA Automation Engineer</title>
+  <meta
+    name="description"
+    content="Kirill Terentiev — QA Automation Engineer from Almaty. Backend testing, API, WebSocket, integrations, E2E and personal projects."
+  >
 
   <style>
     :root {
-      --bg1: #ffd6e6;
-      --bg2: #ffe5cc;
-      --bg3: #ffdede;
-      --card-bg: rgba(255,255,255,0.55);
-      --card-border: rgba(255,255,255,0.8);
-      --accent: #ff6ea7;
-      --accent-dark: #ff4f93;
-      --text-main: #2f2f2f;
-      --text-soft: #555;
+      color-scheme: light dark;
+      --bg: #f6f6f3;
+      --surface: rgba(255, 255, 255, 0.72);
+      --surface-strong: #ffffff;
+      --text: #171717;
+      --muted: #686868;
+      --line: rgba(23, 23, 23, 0.12);
+      --accent: #3e63dd;
+      --accent-text: #ffffff;
+      --shadow: 0 20px 70px rgba(0, 0, 0, 0.07);
+      --radius: 24px;
+      --max-width: 880px;
     }
-    * { box-sizing: border-box; }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111210;
+        --surface: rgba(27, 28, 26, 0.74);
+        --surface-strong: #1b1c1a;
+        --text: #f2f2ef;
+        --muted: #a4a59f;
+        --line: rgba(255, 255, 255, 0.12);
+        --accent: #8da4ff;
+        --accent-text: #111210;
+        --shadow: 0 20px 70px rgba(0, 0, 0, 0.24);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      padding: 32px 16px;
-      min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
-      background-size: 200% 200%;
-      animation: gradientMove 14s ease-in-out infinite;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-main);
-    }
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .shell {
-      width: 100%;
-      max-width: 560px;
-      padding: 30px 26px 24px;
-      border-radius: 26px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      box-shadow: 0 16px 40px rgba(255,150,190,0.35);
-      backdrop-filter: blur(14px);
-    }
-    h1 {
-      margin: 0 0 6px;
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      text-align: center;
-    }
-    .subtitle {
-      font-size: 16px;
-      color: var(--text-soft);
-      margin-bottom: 22px;
-      text-align: center;
-    }
-    .text {
-      font-size: 15px;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(62, 99, 221, 0.10), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      font-family:
+        Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.65;
-      color: var(--text-soft);
-      margin-bottom: 18px;
+      -webkit-font-smoothing: antialiased;
     }
-    .section-title {
-      margin-top: 26px;
-      margin-bottom: 10px;
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 72px;
+    }
+
+    .lang-switcher {
+      display: inline-flex;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+    }
+
+    .lang-btn {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 7px 11px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
       font-size: 13px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(0,0,0,0.55);
+      font-weight: 700;
+      cursor: pointer;
     }
+
+    .lang-btn.active {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .hero {
+      margin-bottom: 88px;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(44px, 8vw, 78px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      font-weight: 780;
+    }
+
+    .lead {
+      max-width: 720px;
+      margin: 34px 0 0;
+      font-size: clamp(19px, 3vw, 23px);
+      line-height: 1.55;
+      letter-spacing: -0.015em;
+    }
+
+    .intro {
+      max-width: 700px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
     .btn-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      justify-content: center;
-      margin-top: 10px;
+      margin-top: 30px;
     }
+
     .btn {
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.16s;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 8px 20px rgba(255,110,167,0.45);
-    }
-    .btn-primary:hover {
-      background: var(--accent-dark);
-      transform: translateY(-1px);
-    }
-    .btn-ghost {
-      background: rgba(255,255,255,0.8);
-      color: var(--text-main);
-      border: 1px solid rgba(255,255,255,0.9);
-    }
-    .footer {
-      margin-top: 26px;
-      font-size: 12px;
-      color: rgba(0,0,0,0.6);
-      display: flex;
-      gap: 10px;
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
-    }
-    .footer a {
-      color: rgba(0,0,0,0.7);
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: var(--surface);
+      color: var(--text);
       text-decoration: none;
-      border-bottom: 1px dotted rgba(0,0,0,0.2);
+      font-size: 14px;
+      font-weight: 700;
+      transition:
+        transform 160ms ease,
+        border-color 160ms ease,
+        background-color 160ms ease;
+      backdrop-filter: blur(12px);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(62, 99, 221, 0.45);
+    }
+
+    .btn-primary {
+      border-color: transparent;
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .section {
+      padding: 0 0 88px;
+    }
+
+    .section-kicker {
+      margin: 0 0 18px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    .section h2 {
+      margin: 0 0 22px;
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .section p {
+      max-width: 730px;
+      margin: 0 0 17px;
+      font-size: 17px;
+    }
+
+    .bridge {
+      max-width: 710px;
+      margin-bottom: 88px;
+      font-size: clamp(21px, 3.5vw, 28px);
+      line-height: 1.45;
+      letter-spacing: -0.025em;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(24px, 5vw, 42px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .project-card::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -130px;
+      top: -130px;
+      border-radius: 50%;
+      background: rgba(62, 99, 221, 0.10);
+      pointer-events: none;
+    }
+
+    .project-card + .project-card {
+      margin-top: 24px;
+    }
+
+    .project-card.compact h2 {
+      font-size: clamp(30px, 4vw, 42px);
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 28px 0 0;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .aside-note {
+      color: var(--muted);
+    }
+
+    .contact {
+      padding-top: 6px;
+    }
+
+    .contact p {
+      color: var(--muted);
+    }
+
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer a {
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: var(--text);
+    }
+
+    [data-lang] {
+      display: none;
+    }
+
+    html[data-language="ru"] [data-lang="ru"],
+    html[data-language="en"] [data-lang="en"] {
+      display: revert;
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(calc(100% - 24px), var(--max-width));
+        padding-top: 16px;
+      }
+
+      .topbar {
+        margin-bottom: 48px;
+      }
+
+      .hero {
+        margin-bottom: 68px;
+      }
+
+      .section {
+        padding-bottom: 68px;
+      }
+
+      .bridge {
+        margin-bottom: 68px;
+      }
+
+      .btn {
+        flex: 1 1 auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .btn {
+        transition: none;
+      }
     }
   </style>
 </head>
 
 <body>
-  <main class="shell">
-    <h1>Heartlab</h1>
-    <p class="subtitle">
-      платформа «Ты сможешь» — фитнес для обычной жизни
-    </p>
-
-    <p class="text">
-      Большинство людей не «не спортивные».  
-      Они просто живут обычной жизнью.
-    </p>
-
-    <p class="text">
-      Работа, усталость, пропуски, разные состояния и уровень энергии.  
-      И почти все фитнес-приложения ломаются ровно в этом месте.
-    </p>
-
-    <p class="text">
-      Платформа <strong>«Ты сможешь»</strong> — для тех, кто не хочет быть идеальным.  
-      Для тех, кто тренируется как может сегодня, а не как «должен».
-    </p>
-
-    <p class="text">
-      Здесь нет наказаний за пропуски,  
-      нет дедлайнов,  
-      нет чувства вины.
-    </p>
-
-    <p class="text">
-      Есть движение.  
-      Есть фактический результат.  
-      И есть прогресс, который считается честно.
-    </p>
-
-    <p class="text">
-      Сейчас платформа «Ты сможешь» находится в активной разработке.  
-      Это не концепт и не идея — это рабочий инструмент, который я довожу до устойчивого состояния.
-    </p>
-
-    <p class="text">
-      Платформа уже используется в реальной работе и развивается на основе практического опыта, а не гипотез.
-    </p>
-
-    <div class="section-title">Небольшие проекты</div>
-    <p class="text">
-      Love To-Do — небольшой побочный проект.  
-      Я использую его сам и поддерживаю, но сейчас он не находится в основном фокусе развития.
-    </p>
-
-    <div class="btn-row">
-      <a class="btn btn-ghost" href="https://apps.apple.com/us/app/love-to-do-heart-reminders/id6756277592" target="_blank">
-        Love To-Do · App Store
-      </a>
-      <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.lovetodo.app" target="_blank">
-        Love To-Do · Google Play
-      </a>
+  <main class="page">
+    <div class="topbar">
+      <div class="lang-switcher" aria-label="Language switcher">
+        <button class="lang-btn" type="button" data-set-language="ru">RU</button>
+        <button class="lang-btn" type="button" data-set-language="en">EN</button>
+      </div>
     </div>
 
-    <div class="section-title">Связаться со мной</div>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="mailto:hello@heartlab.app">Email</a>
-      <a class="btn btn-ghost" href="https://t.me/Ter_Kirill" target="_blank">Telegram</a>
+    <section class="hero">
+      <p class="eyebrow">QA Automation · SDET · AQA</p>
+      <h1>Кирилл Терентьев</h1>
+
+      <div data-lang="ru">
+        <p class="lead">
+          Я инженер по автоматизации тестирования из Алматы.
+          Работаю в основном с backend: API, WebSocket, интеграциями
+          и сложными E2E-сценариями.
+        </p>
+
+        <p class="intro">
+          Этот сайт — не замена резюме. Здесь немного обо мне
+          и о проектах, которые я делаю вне основной работы.
+        </p>
+      </div>
+
+      <div data-lang="en">
+        <p class="lead">
+          I’m a QA Automation Engineer based in Almaty.
+          I mostly work with backend systems: APIs, WebSockets,
+          integrations, and complex end-to-end scenarios.
+        </p>
+
+        <p class="intro">
+          This website is not a replacement for my CV.
+          It’s a small place to introduce myself and share the projects
+          I build outside of my day job.
+        </p>
+      </div>
+
+      <div class="btn-row">
+        <a
+          class="btn btn-primary"
+          href="https://hh.kz/resume/f5279e82ff0d43febf0039ed1f504939713134"
+          target="_blank"
+          rel="noreferrer"
+        >HH</a>
+
+        <a
+          class="btn"
+          href="https://www.linkedin.com/in/kirill-terentev/"
+          target="_blank"
+          rel="noreferrer"
+        >LinkedIn</a>
+
+        <a
+          class="btn"
+          href="https://github.com/TerentievKirill"
+          target="_blank"
+          rel="noreferrer"
+        >GitHub</a>
+
+        <a
+          class="btn"
+          href="https://t.me/Ter_Kirill"
+          target="_blank"
+          rel="noreferrer"
+        >Telegram</a>
+
+        <a
+          class="btn"
+          href="mailto:kirillterentiev@gmail.com"
+        >Email</a>
+      </div>
+    </section>
+
+    <div class="bridge">
+      <span data-lang="ru">
+        Я люблю делать полезные вещи своими руками — от небольших скриптов
+        и внутренних инструментов до полноценных сервисов.
+        Один из таких проектов — <strong>BookFerry</strong>.
+      </span>
+
+      <span data-lang="en">
+        I like building useful things myself — from small scripts and internal
+        tools to complete services. One of those projects is
+        <strong>BookFerry</strong>.
+      </span>
     </div>
 
-    <div class="footer">
-      <span>© 2026 Heartlab</span>
-      <a href="/public-offer.html">Публичная оферта платформы «Ты сможешь»</a>
+    <section class="section">
+      <article class="project-card">
+        <p class="section-kicker">Open source · Pet project</p>
+        <h2>BookFerry</h2>
+
+        <div data-lang="ru">
+          <p>
+            BookFerry — open-source проект для владельцев электронных книг.
+          </p>
+
+          <p>
+            Идея появилась из простой бытовой проблемы: найти книгу обычно
+            легко, а дальше начинаются скачивание файла, поиск нужного формата,
+            отправка самому себе на почту и перенос на ридер.
+          </p>
+
+          <p>
+            BookFerry убирает эту цепочку. Сервис ищет книги в OPDS-каталогах
+            и позволяет получить найденную книгу прямо в Telegram или отправить
+            её на PocketBook / Kindle через email.
+          </p>
+
+          <p>
+            Сейчас проект состоит из backend-сервиса на FastAPI и Telegram-бота.
+            Также я делаю отдельный клиент для PocketBook, а дальше хочу добавить
+            мобильное приложение.
+          </p>
+
+          <p class="aside-note">
+            Это не демонстрационный TODO из учебника: у проекта есть сервер,
+            API, база пользователей, Docker-развёртывание и реальные пользователи.
+          </p>
+        </div>
+
+        <div data-lang="en">
+          <p>
+            BookFerry is an open-source project for e-reader owners.
+          </p>
+
+          <p>
+            It started with a very ordinary problem: finding a book is usually
+            easy, but then comes downloading the file, finding the right format,
+            emailing it to yourself, and finally getting it onto the reader.
+          </p>
+
+          <p>
+            BookFerry removes that chain. It searches OPDS catalogs and lets you
+            receive a book directly in Telegram or send it to a PocketBook /
+            Kindle email address.
+          </p>
+
+          <p>
+            The project currently includes a FastAPI backend and a Telegram bot.
+            I’m also building a native PocketBook client, with a mobile app
+            planned next.
+          </p>
+
+          <p class="aside-note">
+            It’s not a tutorial TODO app: it has a real server, API, user
+            database, Docker deployment, and actual users.
+          </p>
+        </div>
+
+        <div class="stack" aria-label="BookFerry technology stack">
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">aiogram</span>
+          <span class="tag">SQLite</span>
+          <span class="tag">OPDS</span>
+          <span class="tag">Docker</span>
+        </div>
+
+        <div class="btn-row">
+          <a
+            class="btn btn-primary"
+            href="https://t.me/BookFerry_bot"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span data-lang="ru">Попробовать</span>
+            <span data-lang="en">Try it</span>
+          </a>
+
+          <a
+            class="btn"
+            href="https://github.com/TerentievKirill/BookFerry"
+            target="_blank"
+            rel="noreferrer"
+          >Backend · GitHub</a>
+
+          <a
+            class="btn"
+            href="https://github.com/TerentievKirill/BookFerryBot"
+            target="_blank"
+            rel="noreferrer"
+          >Bot · GitHub</a>
+
+          <a
+            class="btn"
+            href="https://api.heartlab.app/docs#/"
+            target="_blank"
+            rel="noreferrer"
+          >API Docs</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <article class="project-card compact">
+        <p class="section-kicker">
+          <span data-lang="ru">Ещё один эксперимент</span>
+          <span data-lang="en">One more experiment</span>
+        </p>
+
+        <h2>Love To-Do</h2>
+
+        <div data-lang="ru">
+          <p>
+            Однажды мне стало интересно не только написать мобильное приложение,
+            но и пройти весь путь до настоящей публикации: сборки, магазины,
+            ревью и всё остальное.
+          </p>
+
+          <p>
+            Так появился Love To-Do — небольшое приложение с напоминаниями
+            для близких. Оно добралось и до App Store, и до Google Play.
+          </p>
+
+          <p class="aside-note">
+            Было интересно и сделать, и действительно опубликовать.
+            Следующим великим стартапом оно не стало — мир, видимо,
+            оказался ещё не готов.
+          </p>
+        </div>
+
+        <div data-lang="en">
+          <p>
+            At some point I wanted to do more than just build a mobile app:
+            I wanted to take one all the way through release builds, store
+            reviews, publication, and everything around it.
+          </p>
+
+          <p>
+            That became Love To-Do — a small reminders app for people close to
+            you. It made it to both the App Store and Google Play.
+          </p>
+
+          <p class="aside-note">
+            Building it was fun. Actually publishing it was even more useful.
+            It did not become the next great startup — apparently, the world
+            just wasn’t ready yet.
+          </p>
+        </div>
+
+        <div class="btn-row">
+          <a
+            class="btn"
+            href="https://apps.apple.com/us/app/love-to-do-heart-reminders/id6756277592"
+            target="_blank"
+            rel="noreferrer"
+          >App Store</a>
+
+          <a
+            class="btn"
+            href="https://play.google.com/store/apps/details?id=com.lovetodo.app"
+            target="_blank"
+            rel="noreferrer"
+          >Google Play</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="section contact">
+      <p class="section-kicker">
+        <span data-lang="ru">Связаться</span>
+        <span data-lang="en">Contact</span>
+      </p>
+
+      <h2>
+        <span data-lang="ru">Можно просто написать.</span>
+        <span data-lang="en">Feel free to say hello.</span>
+      </h2>
+
+      <div data-lang="ru">
+        <p>
+          Если хотите поговорить о работе, автоматизации, тестировании
+          или BookFerry — пишите.
+        </p>
+      </div>
+
+      <div data-lang="en">
+        <p>
+          If you’d like to talk about work, test automation, QA,
+          or BookFerry — feel free to reach out.
+        </p>
+      </div>
+
+      <div class="btn-row">
+        <a
+          class="btn btn-primary"
+          href="https://t.me/Ter_Kirill"
+          target="_blank"
+          rel="noreferrer"
+        >Telegram</a>
+
+        <a
+          class="btn"
+          href="mailto:kirillterentiev@gmail.com"
+        >Email</a>
+
+        <a
+          class="btn"
+          href="https://www.linkedin.com/in/kirill-terentev/"
+          target="_blank"
+          rel="noreferrer"
+        >LinkedIn</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© 2026 Kirill Terentiev</span>
       <a href="/privacy.html">Privacy</a>
       <a href="/terms.html">Terms</a>
-      <a href="/terms_fitness.html">Terms Fitness Apps</a>
       <a href="/delete-account.html">Delete account</a>
-    </div>
+    </footer>
   </main>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const buttons = document.querySelectorAll("[data-set-language]");
+      const supported = ["ru", "en"];
+
+      const browserLanguage = (
+        navigator.languages?.[0] ||
+        navigator.language ||
+        "en"
+      ).toLowerCase();
+
+      const detectedLanguage = browserLanguage.startsWith("ru") ? "ru" : "en";
+      const savedLanguage = localStorage.getItem("site-language");
+      const initialLanguage = supported.includes(savedLanguage)
+        ? savedLanguage
+        : detectedLanguage;
+
+      function setLanguage(language, save = false) {
+        const lang = supported.includes(language) ? language : "en";
+
+        root.dataset.language = lang;
+        root.lang = lang;
+
+        buttons.forEach((button) => {
+          const active = button.dataset.setLanguage === lang;
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
+
+        if (save) {
+          localStorage.setItem("site-language", lang);
+        }
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          setLanguage(button.dataset.setLanguage, true);
+        });
+      });
+
+      setLanguage(initialLanguage);
+    })();
+  </script>
 </body>
 </html>
