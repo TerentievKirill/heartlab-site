@@ -35,44 +35,42 @@ jobs:
 
           mkdir -p downloads allure-results
 
-          smoke_run=$(gh run list \
-            --repo TerentievKirill/BookFerry \
-            --workflow tests.yml \
-            --branch main \
-            --limit 1 \
-            --json databaseId \
-            --jq '.[0].databaseId')
+          download_latest_artifact() {
+            local repo="$1"
+            local artifact_name="$2"
+            local output_dir="$3"
 
-          server_e2e_run=$(gh run list \
-            --repo TerentievKirill/BookFerry \
-            --workflow external-e2e.yml \
-            --branch main \
-            --limit 1 \
-            --json databaseId \
-            --jq '.[0].databaseId')
+            local run_id
+            run_id=$(gh api \
+              "repos/${repo}/actions/artifacts?name=${artifact_name}&per_page=100" \
+              --jq '[.artifacts[] | select(.expired == false)] | sort_by(.created_at) | reverse | .[0].workflow_run.id // empty')
 
-          bot_e2e_run=$(gh run list \
-            --repo TerentievKirill/BookFerryBot \
-            --workflow external-e2e.yml \
-            --branch testing \
-            --limit 1 \
-            --json databaseId \
-            --jq '.[0].databaseId')
+            if [ -z "$run_id" ]; then
+              echo "No valid artifact found: ${repo} / ${artifact_name}"
+              exit 1
+            fi
 
-          gh run download "$smoke_run" \
-            --repo TerentievKirill/BookFerry \
-            --name bookferry-smoke-allure-results \
-            --dir downloads/server-smoke
+            echo "Downloading ${artifact_name} from run ${run_id}"
+            gh run download "$run_id" \
+              --repo "$repo" \
+              --name "$artifact_name" \
+              --dir "$output_dir"
+          }
 
-          gh run download "$server_e2e_run" \
-            --repo TerentievKirill/BookFerry \
-            --name bookferry-e2e-allure-results \
-            --dir downloads/server-e2e
+          download_latest_artifact \
+            TerentievKirill/BookFerry \
+            bookferry-smoke-allure-results \
+            downloads/server-smoke
 
-          gh run download "$bot_e2e_run" \
-            --repo TerentievKirill/BookFerryBot \
-            --name bookferrybot-e2e-allure-results \
-            --dir downloads/bot-e2e
+          download_latest_artifact \
+            TerentievKirill/BookFerry \
+            bookferry-e2e-allure-results \
+            downloads/server-e2e
+
+          download_latest_artifact \
+            TerentievKirill/BookFerryBot \
+            bookferrybot-e2e-allure-results \
+            downloads/bot-e2e
 
           cp -a downloads/server-smoke/. allure-results/
           cp -a downloads/server-e2e/. allure-results/
