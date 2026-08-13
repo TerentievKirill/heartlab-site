@@ -1,0 +1,102 @@
+name: Allure Report
+
+on:
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  allure:
+    runs-on: ubuntu-latest
+
+    env:
+      GH_TOKEN: ${{ secrets.ALLURE_GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Install Allure
+        run: npm install -g allure-commandline
+
+      - name: Download latest Allure results
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p downloads allure-results
+
+          smoke_run=$(gh run list \
+            --repo TerentievKirill/BookFerry \
+            --workflow tests.yml \
+            --branch main \
+            --limit 1 \
+            --json databaseId \
+            --jq '.[0].databaseId')
+
+          server_e2e_run=$(gh run list \
+            --repo TerentievKirill/BookFerry \
+            --workflow external-e2e.yml \
+            --branch main \
+            --limit 1 \
+            --json databaseId \
+            --jq '.[0].databaseId')
+
+          bot_e2e_run=$(gh run list \
+            --repo TerentievKirill/BookFerryBot \
+            --workflow external-e2e.yml \
+            --branch testing \
+            --limit 1 \
+            --json databaseId \
+            --jq '.[0].databaseId')
+
+          gh run download "$smoke_run" \
+            --repo TerentievKirill/BookFerry \
+            --name bookferry-smoke-allure-results \
+            --dir downloads/server-smoke
+
+          gh run download "$server_e2e_run" \
+            --repo TerentievKirill/BookFerry \
+            --name bookferry-e2e-allure-results \
+            --dir downloads/server-e2e
+
+          gh run download "$bot_e2e_run" \
+            --repo TerentievKirill/BookFerryBot \
+            --name bookferrybot-e2e-allure-results \
+            --dir downloads/bot-e2e
+
+          cp -a downloads/server-smoke/. allure-results/
+          cp -a downloads/server-e2e/. allure-results/
+          cp -a downloads/bot-e2e/. allure-results/
+
+      - name: Preserve Allure history
+        run: |
+          if [ -d allure/history ]; then
+            cp -r allure/history allure-results/history
+          fi
+
+      - name: Generate combined report
+        run: allure generate allure-results --clean -o allure
+
+      - name: Commit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add allure
+
+          if git diff --cached --quiet; then
+            echo "Allure report has not changed"
+            exit 0
+          fi
+
+          git commit -m "update Allure report"
+          git push
