@@ -40,303 +40,59 @@
       }
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background:
-        radial-gradient(circle at 15% 0%, rgba(62, 99, 221, 0.10), transparent 28rem),
-        var(--bg);
+      background: radial-gradient(circle at 15% 0%, rgba(62, 99, 221, 0.10), transparent 28rem), var(--bg);
       color: var(--text);
-      font-family:
-        Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
-
-    a {
-      color: inherit;
-    }
-
-    .page {
-      width: min(calc(100% - 32px), var(--max-width));
-      margin: 0 auto;
-      padding: 28px 0 56px;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      margin-bottom: 72px;
-    }
-
-    .lang-switcher {
-      display: inline-flex;
-      gap: 4px;
-      padding: 4px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--surface);
-      backdrop-filter: blur(12px);
-    }
-
-    .lang-btn {
-      appearance: none;
-      border: 0;
-      border-radius: 999px;
-      padding: 7px 11px;
-      background: transparent;
-      color: var(--muted);
-      font: inherit;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .lang-btn.active {
-      background: var(--text);
-      color: var(--bg);
-    }
-
-    .hero {
-      margin-bottom: 88px;
-    }
-
-    .eyebrow {
-      margin: 0 0 16px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      max-width: 760px;
-      margin: 0;
-      font-size: clamp(44px, 8vw, 78px);
-      line-height: 0.98;
-      letter-spacing: -0.055em;
-      font-weight: 780;
-    }
-
-    .lead {
-      max-width: 720px;
-      margin: 34px 0 0;
-      font-size: clamp(19px, 3vw, 23px);
-      line-height: 1.55;
-      letter-spacing: -0.015em;
-    }
-
-    .intro {
-      max-width: 700px;
-      margin: 18px 0 0;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 10px 16px;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      background: var(--surface);
-      color: var(--text);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
-      transition:
-        transform 160ms ease,
-        border-color 160ms ease,
-        background-color 160ms ease;
-      backdrop-filter: blur(12px);
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      border-color: rgba(62, 99, 221, 0.45);
-    }
-
-    .btn-primary {
-      border-color: transparent;
-      background: var(--text);
-      color: var(--bg);
-    }
-
-    .section {
-      padding: 0 0 88px;
-    }
-
-    .section-kicker {
-      margin: 0 0 18px;
-      color: var(--accent);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-    }
-
-    .section h2 {
-      margin: 0 0 22px;
-      font-size: clamp(34px, 5vw, 52px);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-    }
-
-    .section p {
-      max-width: 730px;
-      margin: 0 0 17px;
-      font-size: 17px;
-    }
-
-    .bridge {
-      max-width: 710px;
-      margin-bottom: 88px;
-      font-size: clamp(21px, 3.5vw, 28px);
-      line-height: 1.45;
-      letter-spacing: -0.025em;
-    }
-
-    .project-card {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(24px, 5vw, 42px);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
-    }
-
-    .project-card::after {
-      content: "";
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      right: -130px;
-      top: -130px;
-      border-radius: 50%;
-      background: rgba(62, 99, 221, 0.10);
-      pointer-events: none;
-    }
-
-    .project-card + .project-card {
-      margin-top: 24px;
-    }
-
-    .project-card.compact h2 {
-      font-size: clamp(30px, 4vw, 42px);
-    }
-
-    .stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 28px 0 0;
-    }
-
-    .tag {
-      padding: 6px 10px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 650;
-    }
-
-    .aside-note {
-      color: var(--muted);
-    }
-
-    .contact {
-      padding-top: 6px;
-    }
-
-    .contact p {
-      color: var(--muted);
-    }
-
-    .footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px 18px;
-      padding-top: 28px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .footer a {
-      text-decoration: none;
-    }
-
-    .footer a:hover {
-      color: var(--text);
-    }
-
-    [data-lang] {
-      display: none;
-    }
-
-    html[data-language="ru"] [data-lang="ru"],
-    html[data-language="en"] [data-lang="en"] {
-      display: revert;
-    }
-
+    a { color: inherit; }
+    .page { width: min(calc(100% - 32px), var(--max-width)); margin: 0 auto; padding: 28px 0 56px; }
+    .topbar { display: flex; justify-content: flex-end; align-items: center; margin-bottom: 72px; }
+    .lang-switcher { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); backdrop-filter: blur(12px); }
+    .lang-btn { appearance: none; border: 0; border-radius: 999px; padding: 7px 11px; background: transparent; color: var(--muted); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+    .lang-btn.active { background: var(--text); color: var(--bg); }
+    .hero { margin-bottom: 88px; }
+    .eyebrow { margin: 0 0 16px; color: var(--muted); font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: 0; font-size: clamp(44px, 8vw, 78px); line-height: 0.98; letter-spacing: -0.055em; font-weight: 780; }
+    .lead { max-width: 720px; margin: 34px 0 0; font-size: clamp(19px, 3vw, 23px); line-height: 1.55; letter-spacing: -0.015em; }
+    .intro { max-width: 700px; margin: 18px 0 0; color: var(--muted); font-size: 17px; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); color: var(--text); text-decoration: none; font-size: 14px; font-weight: 700; transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease; backdrop-filter: blur(12px); }
+    .btn:hover { transform: translateY(-2px); border-color: rgba(62, 99, 221, 0.45); }
+    .btn-primary { border-color: transparent; background: var(--text); color: var(--bg); }
+    .section { padding: 0 0 88px; }
+    .section-kicker { margin: 0 0 18px; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: 0.10em; text-transform: uppercase; }
+    .section h2 { margin: 0 0 22px; font-size: clamp(34px, 5vw, 52px); line-height: 1.05; letter-spacing: -0.04em; }
+    .section p { max-width: 730px; margin: 0 0 17px; font-size: 17px; }
+    .bridge { max-width: 710px; margin-bottom: 88px; font-size: clamp(21px, 3.5vw, 28px); line-height: 1.45; letter-spacing: -0.025em; }
+    .project-card { position: relative; overflow: hidden; padding: clamp(24px, 5vw, 42px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); backdrop-filter: blur(16px); }
+    .project-card::after { content: ""; position: absolute; width: 260px; height: 260px; right: -130px; top: -130px; border-radius: 50%; background: rgba(62, 99, 221, 0.10); pointer-events: none; }
+    .project-card + .project-card { margin-top: 24px; }
+    .project-card.compact h2 { font-size: clamp(30px, 4vw, 42px); }
+    .stack { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 0; }
+    .tag { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 13px; font-weight: 650; }
+    .aside-note { color: var(--muted); }
+    .contact { padding-top: 6px; }
+    .contact p { color: var(--muted); }
+    .footer { display: flex; flex-wrap: wrap; gap: 12px 18px; padding-top: 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    .footer a { text-decoration: none; }
+    .footer a:hover { color: var(--text); }
+    [data-lang] { display: none; }
+    html[data-language="ru"] [data-lang="ru"], html[data-language="en"] [data-lang="en"] { display: revert; }
     @media (max-width: 640px) {
-      .page {
-        width: min(calc(100% - 24px), var(--max-width));
-        padding-top: 16px;
-      }
-
-      .topbar {
-        margin-bottom: 48px;
-      }
-
-      .hero {
-        margin-bottom: 68px;
-      }
-
-      .section {
-        padding-bottom: 68px;
-      }
-
-      .bridge {
-        margin-bottom: 68px;
-      }
-
-      .btn {
-        flex: 1 1 auto;
-      }
+      .page { width: min(calc(100% - 24px), var(--max-width)); padding-top: 16px; }
+      .topbar { margin-bottom: 48px; }
+      .hero { margin-bottom: 68px; }
+      .section { padding-bottom: 68px; }
+      .bridge { margin-bottom: 68px; }
+      .btn { flex: 1 1 auto; }
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .btn {
-        transition: none;
-      }
-    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
   </style>
 </head>
 
@@ -354,143 +110,48 @@
       <h1>Kirill Terentev</h1>
 
       <div data-lang="ru">
-        <p class="lead">
-          Я инженер по автоматизации тестирования из Алматы.
-          Работаю в основном с backend: API, WebSocket, интеграциями
-          и сложными E2E-сценариями.
-        </p>
-
-        <p class="intro">
-          Этот сайт — не замена резюме. Здесь немного обо мне
-          и о проектах, которые я делаю вне основной работы.
-        </p>
+        <p class="lead">Я инженер по автоматизации тестирования из Алматы. Работаю в основном с backend: API, WebSocket, интеграциями и сложными E2E-сценариями.</p>
+        <p class="intro">Этот сайт — не замена резюме. Здесь немного обо мне и о проектах, которые я делаю вне основной работы.</p>
       </div>
 
       <div data-lang="en">
-        <p class="lead">
-          I’m a QA Automation Engineer based in Almaty.
-          I mostly work with backend systems: APIs, WebSockets,
-          integrations, and complex end-to-end scenarios.
-        </p>
-
-        <p class="intro">
-          This website is not a replacement for my CV.
-          It’s a small place to introduce myself and share the projects
-          I build outside of my day job.
-        </p>
+        <p class="lead">I’m a QA Automation Engineer based in Almaty. I mostly work with backend systems: APIs, WebSockets, integrations, and complex end-to-end scenarios.</p>
+        <p class="intro">This website is not a replacement for my CV. It’s a small place to introduce myself and share the projects I build outside of my day job.</p>
       </div>
 
       <div class="btn-row">
-        <a
-          class="btn btn-primary"
-          href="https://hh.kz/resume/f5279e82ff0d43febf0039ed1f504939713134"
-          target="_blank"
-          rel="noreferrer"
-        >HH</a>
-
-        <a
-          class="btn"
-          href="https://www.linkedin.com/in/kirill-terentev/"
-          target="_blank"
-          rel="noreferrer"
-        >LinkedIn</a>
-
-        <a
-          class="btn"
-          href="https://github.com/TerentievKirill"
-          target="_blank"
-          rel="noreferrer"
-        >GitHub</a>
-
-        <a
-          class="btn"
-          href="https://t.me/Ter_Kirill"
-          target="_blank"
-          rel="noreferrer"
-        >Telegram</a>
-
-        <a
-          class="btn"
-          href="mailto:kirillterentiev@gmail.com"
-        >Email</a>
+        <a class="btn btn-primary" href="https://hh.kz/resume/f5279e82ff0d43febf0039ed1f504939713134" target="_blank" rel="noreferrer">HH</a>
+        <a class="btn" href="https://www.linkedin.com/in/kirill-terentev/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/TerentievKirill" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn" href="https://t.me/Ter_Kirill" target="_blank" rel="noreferrer">Telegram</a>
+        <a class="btn" href="mailto:kirillterentiev@gmail.com">Email</a>
       </div>
     </section>
 
     <div class="bridge">
-      <span data-lang="ru">
-        Я люблю делать полезные вещи своими руками — от небольших скриптов
-        и внутренних инструментов до полноценных сервисов.
-        Один из таких проектов — <strong>BookFerry</strong>.
-      </span>
-
-      <span data-lang="en">
-        I like building useful things myself — from small scripts and internal
-        tools to complete services. One of those projects is
-        <strong>BookFerry</strong>.
-      </span>
+      <span data-lang="ru">Я люблю делать полезные вещи своими руками — от небольших скриптов и внутренних инструментов до полноценных сервисов. Один из таких проектов — <strong>BookFerry</strong>.</span>
+      <span data-lang="en">I like building useful things myself — from small scripts and internal tools to complete services. One of those projects is <strong>BookFerry</strong>.</span>
     </div>
 
     <section class="section">
       <article class="project-card">
-        <p class="section-kicker">Open source · Pet project</p>
+        <p class="section-kicker">Open source · Live project</p>
         <h2>BookFerry</h2>
 
         <div data-lang="ru">
-          <p>
-            BookFerry — open-source проект для владельцев электронных книг.
-          </p>
-
-          <p>
-            Идея появилась из простой бытовой проблемы: найти книгу обычно
-            легко, а дальше начинаются скачивание файла, поиск нужного формата,
-            отправка самому себе на почту и перенос на ридер.
-          </p>
-
-          <p>
-            BookFerry убирает эту цепочку. Сервис ищет книги в OPDS-каталогах
-            и позволяет получить найденную книгу прямо в Telegram или отправить
-            её на PocketBook / Kindle через email.
-          </p>
-
-          <p>
-            Сейчас проект состоит из backend-сервиса на FastAPI и Telegram-бота.
-            Также я делаю отдельный клиент для PocketBook, а дальше хочу добавить
-            мобильное приложение.
-          </p>
-
-          <p class="aside-note">
-            Проект работает как развёрнутый сервис: backend, API, база пользователей,
-            Docker-развёртывание и реальные пользователи.
-          </p>
+          <p>BookFerry — open-source проект для владельцев электронных книг и одновременно живой сервис, которым уже пользуются реальные люди.</p>
+          <p>Идея появилась из простой бытовой проблемы: найти книгу обычно легко, а дальше начинаются скачивание файла, поиск нужного формата, отправка самому себе на почту и перенос на ридер.</p>
+          <p>BookFerry убирает эту цепочку. Сервис ищет книги в OPDS-каталогах и позволяет получить найденную книгу прямо в Telegram или отправить её на PocketBook / Kindle через email.</p>
+          <p>Сейчас проект состоит из backend-сервиса на FastAPI и Telegram-бота. Также я делаю отдельный клиент для PocketBook, а дальше хочу добавить мобильное приложение.</p>
+          <p class="aside-note">Это не просто демо или учебный репозиторий: сервис развёрнут, у него есть API, база пользователей, Docker-инфраструктура, автотесты и пользователи, которые возвращаются к нему каждый день. Я поддерживаю проект как небольшой production-сервис — разбираю реальные сценарии, ошибки и поведение внешних источников.</p>
         </div>
 
         <div data-lang="en">
-          <p>
-            BookFerry is an open-source project for e-reader owners.
-          </p>
-
-          <p>
-            It started with a very ordinary problem: finding a book is usually
-            easy, but then comes downloading the file, finding the right format,
-            emailing it to yourself, and finally getting it onto the reader.
-          </p>
-
-          <p>
-            BookFerry removes that chain. It searches OPDS catalogs and lets you
-            receive a book directly in Telegram or send it to a PocketBook /
-            Kindle email address.
-          </p>
-
-          <p>
-            The project currently includes a FastAPI backend and a Telegram bot.
-            I’m also building a native PocketBook client, with a mobile app
-            planned next.
-          </p>
-
-          <p class="aside-note">
-            The project runs as a deployed service with a backend, API, user database,
-            Docker deployment, and actual users.
-          </p>
+          <p>BookFerry is an open-source project for e-reader owners and, more importantly, a live service used by real people.</p>
+          <p>It started with a very ordinary problem: finding a book is usually easy, but then comes downloading the file, finding the right format, emailing it to yourself, and finally getting it onto the reader.</p>
+          <p>BookFerry removes that chain. It searches OPDS catalogs and lets you receive a book directly in Telegram or send it to a PocketBook / Kindle email address.</p>
+          <p>The project currently includes a FastAPI backend and a Telegram bot. I’m also building a native PocketBook client, with a mobile app planned next.</p>
+          <p class="aside-note">This is not just a demo or learning repository: the service is deployed, has an API, user database, Docker-based infrastructure, automated tests, and real users who come back and use it every day. I maintain it as a small production service, dealing with real usage scenarios, failures, and external integrations.</p>
         </div>
 
         <div class="stack" aria-label="BookFerry technology stack">
@@ -500,300 +161,84 @@
           <span class="tag">SQLite</span>
           <span class="tag">OPDS</span>
           <span class="tag">Docker</span>
+          <span class="tag">pytest</span>
+          <span class="tag">Allure</span>
         </div>
 
         <div class="btn-row">
-          <a
-            class="btn btn-primary"
-            href="https://t.me/BookFerry_bot"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span data-lang="ru">Попробовать</span>
-            <span data-lang="en">Try it</span>
-          </a>
-
-          <a
-            class="btn"
-            href="https://github.com/TerentievKirill/BookFerry"
-            target="_blank"
-            rel="noreferrer"
-          >Backend · GitHub</a>
-
-          <a
-            class="btn"
-            href="https://github.com/TerentievKirill/BookFerryBot"
-            target="_blank"
-            rel="noreferrer"
-          >Bot · GitHub</a>
-
-          <a
-            class="btn"
-            href="https://api.heartlab.app/docs#/"
-            target="_blank"
-            rel="noreferrer"
-          >API Docs</a>
+          <a class="btn btn-primary" href="https://t.me/BookFerry_bot" target="_blank" rel="noreferrer"><span data-lang="ru">Попробовать</span><span data-lang="en">Try it</span></a>
+          <a class="btn" href="https://github.com/TerentievKirill/BookFerry" target="_blank" rel="noreferrer">Backend · GitHub</a>
+          <a class="btn" href="https://github.com/TerentievKirill/BookFerryBot" target="_blank" rel="noreferrer">Bot · GitHub</a>
+          <a class="btn" href="https://api.heartlab.app/docs#/" target="_blank" rel="noreferrer">API Docs</a>
+          <a class="btn" href="https://allure.heartlab.app/" target="_blank" rel="noreferrer">Allure Report</a>
         </div>
       </article>
     </section>
 
     <section class="section">
       <article class="project-card compact">
-        <p class="section-kicker">
-          <span data-lang="ru">Небольшой эксперимент</span>
-          <span data-lang="en">Small experiment</span>
-        </p>
-
+        <p class="section-kicker"><span data-lang="ru">Небольшой эксперимент</span><span data-lang="en">Small experiment</span></p>
         <h2>Braille Puncture Bot</h2>
-
         <div data-lang="ru">
-          <p>
-            Ещё один небольшой Telegram-бот: отправляешь ему русский текст,
-            а он превращает его в зеркальный шаблон Брайля и возвращает DOCX.
-            Документ можно распечатать, проколоть точки с обратной стороны листа
-            и получить на лицевой стороне рельефное письмо шрифтом Брайля.
-          </p>
-
-          <p class="aside-note">
-            Проект экспериментальный и немного недоделанный, но основная идея работает.
-          </p>
+          <p>Ещё один небольшой Telegram-бот: отправляешь ему русский текст, а он превращает его в зеркальный шаблон Брайля и возвращает DOCX. Документ можно распечатать, проколоть точки с обратной стороны листа и получить на лицевой стороне рельефное письмо шрифтом Брайля.</p>
+          <p class="aside-note">Проект экспериментальный и немного недоделанный, но основная идея работает.</p>
         </div>
-
         <div data-lang="en">
-          <p>
-            Another small Telegram bot: send it Russian text and it converts it
-            into a mirrored Braille template in a DOCX file. Print the document,
-            punch the dots from the back of the page, and the front becomes a
-            raised Braille letter.
-          </p>
-
-          <p class="aside-note">
-            It is experimental and not quite finished, but the core idea works.
-          </p>
+          <p>Another small Telegram bot: send it Russian text and it converts it into a mirrored Braille template in a DOCX file. Print the document, punch the dots from the back of the page, and the front becomes a raised Braille letter.</p>
+          <p class="aside-note">It is experimental and not quite finished, but the core idea works.</p>
         </div>
-
-        <div class="btn-row">
-          <a
-            class="btn"
-            href="https://github.com/TerentievKirill/Puncture_Braile_bot"
-            target="_blank"
-            rel="noreferrer"
-          >GitHub</a>
-        </div>
+        <div class="btn-row"><a class="btn" href="https://github.com/TerentievKirill/Puncture_Braile_bot" target="_blank" rel="noreferrer">GitHub</a></div>
       </article>
     </section>
 
     <section class="section">
       <article class="project-card compact">
-        <p class="section-kicker">
-          <span data-lang="ru">Попытка захватить мир №24</span>
-          <span data-lang="en">World domination attempt #24</span>
-        </p>
-
+        <p class="section-kicker"><span data-lang="ru">Попытка захватить мир №24</span><span data-lang="en">World domination attempt #24</span></p>
         <h2>You Can Do It</h2>
-
         <div data-lang="ru">
-          <p>
-            Платформа для тренеров и их клиентов: программы тренировок,
-            персональные планы и отслеживание прогресса. Backend на FastAPI,
-            клиентская часть — Flutter.
-          </p>
-
-          <p class="aside-note">
-            Проект дошёл до рабочей серверной архитектуры и модели данных,
-            а потом почти год пролежал без движения. Похоже, фитнес-мир
-            в этот раз захватить не получилось.
-          </p>
+          <p>Платформа для тренеров и их клиентов: программы тренировок, персональные планы и отслеживание прогресса. Backend на FastAPI, клиентская часть — Flutter.</p>
+          <p class="aside-note">Проект дошёл до рабочей серверной архитектуры и модели данных, а потом почти год пролежал без движения. Похоже, фитнес-мир в этот раз захватить не получилось.</p>
         </div>
-
         <div data-lang="en">
-          <p>
-            A platform for trainers and their clients: workout programs,
-            personal plans, and progress tracking. FastAPI on the backend,
-            Flutter on the client side.
-          </p>
-
-          <p class="aside-note">
-            It reached a working backend architecture and data model,
-            then spent almost a year untouched. Apparently, world domination
-            through fitness will have to wait.
-          </p>
-        </div>
-
-        <div class="btn-row">
-          <a
-            class="btn"
-            href="https://github.com/TerentievKirill/you_can_do_it"
-            target="_blank"
-            rel="noreferrer"
-          >GitHub</a>
-        </div>
-      </article>
-    </section>
-
-    <section class="section">
-      <article class="project-card compact">
-        <p class="section-kicker">
-          <span data-lang="ru">Ещё один эксперимент</span>
-          <span data-lang="en">One more experiment</span>
-        </p>
-
-        <h2>Love To-Do</h2>
-
-        <div data-lang="ru">
-          <p>
-            Однажды мне стало интересно не только написать мобильное приложение,
-            но и пройти весь путь до настоящей публикации: сборки, магазины,
-            ревью и всё остальное.
-          </p>
-
-          <p>
-            Так появился Love To-Do — небольшое приложение с напоминаниями
-            для близких. Оно добралось и до App Store, и до Google Play.
-          </p>
-
-          <p class="aside-note">
-            Было интересно и сделать, и действительно опубликовать.
-            Следующим великим стартапом оно не стало — мир, видимо,
-            оказался ещё не готов.
-          </p>
-        </div>
-
-        <div data-lang="en">
-          <p>
-            At some point I wanted to do more than just build a mobile app:
-            I wanted to take one all the way through release builds, store
-            reviews, publication, and everything around it.
-          </p>
-
-          <p>
-            That became Love To-Do — a small reminders app for people close to
-            you. It made it to both the App Store and Google Play.
-          </p>
-
-          <p class="aside-note">
-            Building it was fun. Actually publishing it was even more useful.
-            It did not become the next great startup — apparently, the world
-            just wasn’t ready yet.
-          </p>
-        </div>
-
-        <div class="btn-row">
-          <a
-            class="btn"
-            href="https://apps.apple.com/us/app/love-to-do-heart-reminders/id6756277592"
-            target="_blank"
-            rel="noreferrer"
-          >App Store</a>
-
-          <a
-            class="btn"
-            href="https://play.google.com/store/apps/details?id=com.lovetodo.app"
-            target="_blank"
-            rel="noreferrer"
-          >Google Play</a>
+          <p>A platform for trainers and their clients: workout programs, personal plans, and progress tracking. FastAPI on the backend, Flutter on the client side.</p>
+          <p class="aside-note">It reached a working backend architecture and data model, then spent almost a year untouched. Apparently, world domination through fitness will have to wait.</p>
         </div>
       </article>
     </section>
 
     <section class="section contact">
-      <p class="section-kicker">
-        <span data-lang="ru">Связаться</span>
-        <span data-lang="en">Contact</span>
-      </p>
-
-      <h2>
-        <span data-lang="ru">Можно просто написать.</span>
-        <span data-lang="en">Feel free to say hello.</span>
-      </h2>
-
-      <div data-lang="ru">
-        <p>
-          Если хотите поговорить о работе, автоматизации, тестировании
-          или BookFerry — пишите.
-        </p>
-      </div>
-
-      <div data-lang="en">
-        <p>
-          If you’d like to talk about work, test automation, QA,
-          or BookFerry — feel free to reach out.
-        </p>
-      </div>
-
-      <div class="btn-row">
-        <a
-          class="btn btn-primary"
-          href="https://t.me/Ter_Kirill"
-          target="_blank"
-          rel="noreferrer"
-        >Telegram</a>
-
-        <a
-          class="btn"
-          href="mailto:kirillterentiev@gmail.com"
-        >Email</a>
-
-        <a
-          class="btn"
-          href="https://www.linkedin.com/in/kirill-terentev/"
-          target="_blank"
-          rel="noreferrer"
-        >LinkedIn</a>
-      </div>
+      <div data-lang="ru"><p>Если хотите обсудить работу, тестирование или один из проектов — проще всего написать мне в Telegram или LinkedIn.</p></div>
+      <div data-lang="en"><p>If you'd like to discuss work, testing, or one of these projects, the easiest way to reach me is via Telegram or LinkedIn.</p></div>
     </section>
 
     <footer class="footer">
-      <span>© 2026 Kirill Terentiev</span>
-      <a href="/privacy.html">Privacy</a>
-      <a href="/terms.html">Terms</a>
-      <a href="/delete-account.html">Delete account</a>
+      <span>Kirill Terentiev</span>
+      <a href="https://github.com/TerentievKirill" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/kirill-terentev/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://t.me/Ter_Kirill" target="_blank" rel="noreferrer">Telegram</a>
     </footer>
   </main>
 
   <script>
-    (() => {
-      const root = document.documentElement;
-      const buttons = document.querySelectorAll("[data-set-language]");
-      const supported = ["ru", "en"];
+    const savedLanguage = localStorage.getItem('language');
+    const browserLanguage = navigator.language.toLowerCase().startsWith('ru') ? 'ru' : 'en';
+    const initialLanguage = savedLanguage || browserLanguage;
 
-      const browserLanguage = (
-        navigator.languages?.[0] ||
-        navigator.language ||
-        "en"
-      ).toLowerCase();
+    function setLanguage(language) {
+      document.documentElement.dataset.language = language;
+      document.documentElement.lang = language;
+      localStorage.setItem('language', language);
 
-      const detectedLanguage = browserLanguage.startsWith("ru") ? "ru" : "en";
-      const savedLanguage = localStorage.getItem("site-language");
-      const initialLanguage = supported.includes(savedLanguage)
-        ? savedLanguage
-        : detectedLanguage;
-
-      function setLanguage(language, save = false) {
-        const lang = supported.includes(language) ? language : "en";
-
-        root.dataset.language = lang;
-        root.lang = lang;
-
-        buttons.forEach((button) => {
-          const active = button.dataset.setLanguage === lang;
-          button.classList.toggle("active", active);
-          button.setAttribute("aria-pressed", String(active));
-        });
-
-        if (save) {
-          localStorage.setItem("site-language", lang);
-        }
-      }
-
-      buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-          setLanguage(button.dataset.setLanguage, true);
-        });
+      document.querySelectorAll('[data-set-language]').forEach((button) => {
+        button.classList.toggle('active', button.dataset.setLanguage === language);
       });
+    }
 
-      setLanguage(initialLanguage);
-    })();
+    document.querySelectorAll('[data-set-language]').forEach((button) => {
+      button.addEventListener('click', () => setLanguage(button.dataset.setLanguage));
+    });
+
+    setLanguage(initialLanguage);
   </script>
 </body>
 </html>
